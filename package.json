@@ -1,15 +1,18 @@
 {
   "name": "york-rentals-app",
   "version": "1.0.0",
-  "description": "A rental app for pets and people with bad credit",
+  "description": "A rental app for pets and people with bad credit - giving everyone a fair chance in York Region",
   "private": true,
   "type": "module",
+  "homepage": "https://york-rentals.vercel.app",
   "scripts": {
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "start": "serve -s build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src",
+    "preview": "serve -s build -l 3000"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -23,10 +26,13 @@
     "react-scripts": "5.0.1",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "eslint": "^8.0.0",
+    "eslint-plugin-react": "^7.32.0"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   },
   "browserslist": {
     "production": [
@@ -39,5 +45,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "keywords": [
+    "rental",
+    "apartments",
+    "housing",
+    "york-region",
+    "pets",
+    "second-chance",
+    "fair-housing"
+  ],
+  "author": "Creative Factory Ops",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/creativefactoryops-yules/YORK-rentals-app_files.git"
   }
 }
