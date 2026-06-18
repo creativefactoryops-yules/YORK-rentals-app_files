@@ -24,6 +24,7 @@ To provide an accessible, discrimination-free rental marketplace where:
 ## 🛠️ Tech Stack
 
 - **Frontend**: React 18.2 with React Router v6
+- **Build Tool**: Vite 5.0
 - **Backend**: Supabase (PostgreSQL)
 - **Authentication**: Supabase Auth
 - **Styling**: Pure CSS with responsive grid layout
@@ -54,11 +55,11 @@ npm install
 
 ### 3. Set Up Environment Variables
 
-Create a `.env.local` file in the root directory:
+Create a `.env` file in the root directory:
 
 ```env
-REACT_APP_SUPABASE_URL=your_supabase_url_here
-REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key_here
+VITE_SUPABASE_URL=your_supabase_url_here
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key_here
 ```
 
 Get these values from your Supabase project settings.
@@ -120,9 +121,10 @@ CREATE POLICY "Users can create listings"
 
 ```
 YORK-rentals-app_files/
+├── index.html
 ├── public/
-│   ├── index.html
-│   └── favicon.ico
+│   ├── favicon.ico
+│   └── manifest.json
 ├── src/
 │   ├── components/
 │   │   ├── Header.jsx
@@ -149,8 +151,11 @@ YORK-rentals-app_files/
 │   ├── main.jsx
 │   └── index.css
 ├── .env.example
-├── .env.local (not committed)
+├── .env (not committed)
+├── .eslintrc.cjs
+├── .gitignore
 ├── package.json
+├── vite.config.js
 ├── vercel.json
 └── README.md
 ```
@@ -167,14 +172,8 @@ npm run build
 # Preview production build locally
 npm run preview
 
-# Run tests
-npm run test
-
 # Lint code
 npm run lint
-
-# Eject (not reversible!)
-npm run eject
 ```
 
 ## 🚢 Deployment
@@ -198,8 +197,8 @@ vercel
    - Select your project
    - Go to Settings → Environment Variables
    - Add:
-     - `REACT_APP_SUPABASE_URL`
-     - `REACT_APP_SUPABASE_ANON_KEY`
+     - `VITE_SUPABASE_URL`
+     - `VITE_SUPABASE_ANON_KEY`
 
 4. **Redeploy** after adding environment variables
 
@@ -207,14 +206,14 @@ vercel
 
 ```bash
 npm run build
-# Then upload the build/ folder to GitHub Pages
+# Then upload the dist/ folder to GitHub Pages
 ```
 
 ### Deploy to Netlify
 
 ```bash
 npm install -g netlify-cli
-netlify deploy --prod --dir=build
+netlify deploy --prod --dir=dist
 ```
 
 ## 🔒 Security Features
