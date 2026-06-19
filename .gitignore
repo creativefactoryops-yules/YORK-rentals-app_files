@@ -41,3 +41,8 @@ coverage
 # Misc
 .cache
 *.tsbuildinfo
+__pycache__/
+*.pyc
+
+.vercel
+.env*

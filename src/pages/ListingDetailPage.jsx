@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { getListingById } from '../utils/supabase';
 import './ListingDetailPage.css';
 
 function ListingDetailPage() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    loadListing();
-  }, [id]);
-
-  const loadListing = async () => {
+  const loadListing = useCallback(async () => {
     setLoading(true);
     setError(null);
     const data = await getListingById(id);
@@ -26,7 +21,11 @@ function ListingDetailPage() {
     }
 
     setLoading(false);
-  };
+  }, [id]);
+
+  useEffect(() => {
+    loadListing();
+  }, [loadListing]);
 
   if (loading) {
     return <div className="loading">Loading listing details...</div>;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import SearchFilters from '../components/SearchFilters';
 import ListingCard from '../components/ListingCard';
 import { searchListings } from '../utils/supabase';
@@ -9,10 +9,6 @@ function BrowsePage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    loadListings();
-  }, []);
-
   const loadListings = async () => {
     setLoading(true);
     setError(null);
@@ -20,6 +16,10 @@ function BrowsePage() {
     setListings(results);
     setLoading(false);
   };
+
+  useEffect(() => {
+    loadListings();
+  }, []);
 
   const handleSearch = async (filters) => {
     setLoading(true);
